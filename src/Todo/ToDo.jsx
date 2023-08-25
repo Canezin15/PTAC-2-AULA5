@@ -1,18 +1,19 @@
-
 import { useState } from "react";
 
 import { Link } from "react-router-dom";
 
 export default function ToDo(){
-
     const [atividade, setAtividade] = useState("");
     const [lista, setLista] = useState([]);
 
     const salvar = (e) => {
         e.preventDefault();
         setLista([...lista, {
-            atividade: atividade
-        }])
+            atividade: atividade,
+            id: id
+        }]);
+            setAtividade(id + 1);
+            setAtividade("");
     }
 
     return (
@@ -29,9 +30,11 @@ export default function ToDo(){
                 <button>ADD</button>
             </form>
 
-            {lista.map((ativ) => <p>(ativ.atividade)</p>)}
-            
+            {lista.map((ativ) => 
+                <div key={ativ.id}>
+                    <p>(ativ.atividade)</p>
+            </div>
+    )}
         </div>
-    )
+    );
 }
-
